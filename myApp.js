@@ -15,12 +15,10 @@ app.get("/", myHandler2);
 
 app.use("/public", express.static(__dirname + "/public"));
 
-var response = "Hello json";
-if (process.env.MESSAGE_STYLE === "uppercase")
-  response = response.toUpperCase();
-var myHandler3 = function (req, res) {
-  res.json({ message: response });
-};
-app.get("/json", myHandler3);
+app.get("/json", (req, res) => {
+  process.env.MESSAGE_STYLE === "uppercase"
+    ? res.json({ message: "HELLO JSON" })
+    : res.json({ message: "Hello json" });
+});
 
 module.exports = app;
