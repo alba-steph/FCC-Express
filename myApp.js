@@ -15,6 +15,7 @@ app.get("/", myHandler2);
 
 app.use("/public", express.static(__dirname + "/public"));
 
+require("dotenv").config();
 app.get("/json", (req, res) => {
   process.env.MESSAGE_STYLE === "uppercase"
     ? res.json({ message: "HELLO JSON" })
