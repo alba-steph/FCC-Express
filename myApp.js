@@ -13,4 +13,6 @@ var myHandler2 = function (req, res) {
 };
 app.get("/", myHandler2);
 
+app.use("/public", express.static(__dirname + "/public"));
+
 module.exports = app;
