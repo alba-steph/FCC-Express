@@ -6,7 +6,7 @@ var app = express();
 console.log("Hello World");
 
 var myMiddleware = function (req, res, next) {
-  console.log(req.method, req.path, " -", req.ip);
+  console.log(req.method, req.path, "-", req.ip);
   next();
 };
 app.use(myMiddleware);
@@ -28,5 +28,16 @@ app.get("/json", (req, res) => {
     ? res.json({ message: "HELLO JSON" })
     : res.json({ message: "Hello json" });
 });
+
+app.get(
+  "/now",
+  function (req, res, next) {
+    req.time = Date().toString();
+    next();
+  },
+  function (req, res) {
+    res.json({ time: req.time });
+  }
+);
 
 module.exports = app;
