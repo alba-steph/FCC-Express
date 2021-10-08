@@ -5,6 +5,12 @@ var app = express();
 
 console.log("Hello World");
 
+var myMiddleware = function (req, res, next) {
+  console.log(req.method, req.path, " -", req.ip);
+  next();
+};
+app.use(myMiddleware);
+
 // var myHandler = function (req, res) {
 //   res.send("Hello Express");
 // };
