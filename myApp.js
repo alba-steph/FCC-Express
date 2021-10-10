@@ -9,8 +9,8 @@ console.log("Hello World");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // due to deprecated bodyParser, sub express in same code
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: false }));
 
 var myMiddleware = function (req, res, next) {
   console.log(req.method, req.path, "-", req.ip);
