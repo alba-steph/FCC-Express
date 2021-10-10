@@ -1,9 +1,13 @@
+var bodyParser = require("body-parser");
 require("dotenv").config();
 
 var express = require("express");
 var app = express();
 
 console.log("Hello World");
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 var myMiddleware = function (req, res, next) {
   console.log(req.method, req.path, "-", req.ip);
